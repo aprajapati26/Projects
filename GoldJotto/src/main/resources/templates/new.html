@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{default}">
+<head>
+    <title>New Game</title>
+</head>
+<body>
+<div layout:fragment="content" id="bodycontent">
+    <form th:action="@{/game}" th:object="${playerWord}" method="post">
+        <div class = "row">
+            <p> Select a 5 letter word with no repeating letters (This will be your secret word)
+            </p></div>
+        <div class = "row">
+                <input type="text" name="word" th:field="*{playerWord}"/>
+        </div>
+        <p th:text="${error}" />
+        <div><input type="submit" class = "btn btn-primary" value="Play"/></div>
+    </form>
+</div>
+</body>
+</html>

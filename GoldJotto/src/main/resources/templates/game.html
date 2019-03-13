@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{default}">
+<head>
+    <title>Jotto</title>
+    <!--<style>-->
+        <!--.letters{-->
+            <!--user-select: none;-->
+            <!--display: block;-->
+            <!--margin: 4px;-->
+            <!--font-size: 20px;-->
+            <!--font-weight: bolder;-->
+            <!--cursor: pointer;-->
+        <!--}-->
+        <!--.letters:hover{-->
+            <!--background-color: #F4F4F4-->
+        <!--}-->
+    <!--</style>-->
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>-->
+    <!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="js/game.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div id="alphabet">
+        <div class = "row">
+        <h3 class="text-muted">Letterboard</h3>
+        </div>
+        <div class = "row">
+        <p class = letters style="display:inline-block">A</p>
+        <p class = letters style="display:inline-block">B</p>
+        <p class = letters style="display:inline-block">C</p>
+        <p class = letters style="display:inline-block">D</p>
+        <p class = letters style="display:inline-block">E</p>
+        <p class = letters style="display:inline-block">F</p>
+        <p class = letters style="display:inline-block">G</p>
+        <p class = letters style="display:inline-block">H</p>
+        <p class = letters style="display:inline-block">I</p>
+        <p class = letters style="display:inline-block">J</p>
+        <p class = letters style="display:inline-block">K</p>
+        <p class = letters style="display:inline-block">L</p>
+        <p class = letters style="display:inline-block">M</p>
+        <p class = letters style="display:inline-block">N</p>
+        <p class = letters style="display:inline-block">O</p>
+        <p class = letters style="display:inline-block">P</p>
+        <p class = letters style="display:inline-block">Q</p>
+        <p class = letters style="display:inline-block">R</p>
+        <p class = letters style="display:inline-block">S</p>
+        <p class = letters style="display:inline-block">T</p>
+        <p class = letters style="display:inline-block">U</p>
+        <p class = letters style="display:inline-block">V</p>
+        <p class = letters style="display:inline-block">W</p>
+        <p class = letters style="display:inline-block">X</p>
+        <p class = letters style="display:inline-block">Y</p>
+        <p class = letters style="display:inline-block">Z</p>
+        </div>
+    </div>
+<script>
+    var count = 0
+    $( "p" ).click(function() {
+            count++;
+            var letter = $(this).text().toLowerCase();
+
+            switch(count){
+                case 1:
+                    $(this).css("color","green");
+
+                    break;
+
+                case 2:
+                    $(this).css("color","red");
+                    break;
+
+                case 3:
+                    $(this).css("color","black");
+                    count = 0;
+                    break;
+            }
+
+            $("#player-guesses ul li span").each(function(i) {
+                if($(this).html() == letter) {
+                    switch(count) {
+                        case 1:
+                            $(this).css("color","green");
+                            break;
+
+                        case 2:
+                            $(this).css("color","red");
+                            break;
+
+                        case 0:
+                            $(this).css("color","black");
+                            break;
+
+                    }
+                }
+
+            });
+    });
+</script>
+
+
+<form>
+    <label for="word">Guess a word</label>
+    <input type="text" id="word" class="form-control" placeholder="5 letter word">
+    <button id="send" class="btn btn-default" type="submit">Guess</button>
+</form>
+<p id="error"></p>
+
+<br>
+    <div class = "row">
+        <div class = "col-sm">
+<h4 class = "text-muted">Player Guesses</h4>
+<p ></p>
+<div id="player-guesses">
+    <ul></ul>
+</div>
+        </div>
+        <div class = "col-sm">
+<h4 class = "text-muted">Computer Guesses</h4>
+<p ></p>
+<div id="computer-guesses">
+    <ul></ul>
+</div>
+        </div>
+
+<input type="hidden" id="player-word" name="player-word" th:value="${playerWord}">
+<input type="hidden" id="computer-word-id" name="computer-word-id" th:value="${computerWordID}">
+    </div>
+<!--<div class="myFooter" style=" position: fixed;-->
+  <!--left: 0;-->
+  <!--bottom: 0;-->
+  <!--width: 100%;-->
+  <!--background-color: #132A13;-->
+  <!--color: white;-->
+  <!--height: 50px;-->
+  <!--text-align: center;">-->
+</div>
+
+</body>
+
+</html>

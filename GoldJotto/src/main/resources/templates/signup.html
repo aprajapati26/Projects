@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Jotto SignUp Page</title>
+</head>
+<center>
+<body style = "background: #C6C5B9">
+<div class="myHeader" style=" position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: #132A13;
+  color: white;
+  height: 50px;
+  text-align: center;"></div>
+
+
+<div th:if="${param.error}" style="padding-top: 150px">
+    Invalid username and password.
+</div>
+<form th:action="@{/signup}" method="post" style="padding-top: 150px">
+    <div><label style = "font-family: Helvetica; font size="20px" ;">Sign Up for a New Account</label></div>
+    <div><label> User Name : <input type="text" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Sign Up"/></div>
+</form>
+
+<div class="myFooter" style=" position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #132A13;
+  color: white;
+  height: 50px;
+  text-align: center;">
+
+</div>
+</body>
+</center>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{default}">
+<head>
+    <title>JOTTO</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class ="row">
+        <h2 class = text-muted>Game Over</h2>
+    </div>
+    <div class = "row">
+    <div id="win0" th:if="${(param.win != null) and (param.win[0] == '0')}">
+        CONGRATULATIONS! You win!
+    </div>
+    <div id="win1" th:if="${(param.win != null) and (param.win[0] == '1')}">
+        You lose. Better luck next time!
+    </div>
+    </div>
+    <div class = "row">
+        <div class = "col-sm">
+    <a th:href="@{/game}" style="font-size: 20px">Play New Game</a>
+        </div>
+        <div class = "col-sm">
+        <a th:href="@{/past}" style="font-size: 20px">View Past Game Results</a>
+        </div>
+        </div>
+</div>
+</body>
+</html>

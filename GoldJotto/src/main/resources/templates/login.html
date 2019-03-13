@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{default}">
+<head>
+    <title>Jotto Login Page</title>
+    <!--<link rel="stylesheet" href="/css/style.css"/>-->
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>-->
+    <!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+</head>
+<body class ="text-center">
+<div layout:fragment="content">
+
+<div>
+    <div id="formContent">
+        <!-- Login Form -->
+        <form th:action="@{/login}" method="post" class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <input type="text" id="login" name="username" placeholder="login" class = "form-control">
+            <input type="password" id="password"name="password" placeholder="password" class = "form-control">
+            <input class = "btn btn-primary" type="submit"value="Log In">
+        </form>
+
+        <!-- Signup -->
+        <div id="formFooter">
+            <a class="underlineHover" href="/signup">Register for an account</a>
+        </div>
+
+    </div>
+</div>
+
+<!--<div class="myFooter" style=" position: fixed;-->
+  <!--left: 0;-->
+  <!--bottom: 0;-->
+  <!--width: 100%;-->
+  <!--background-color: #132A13;-->
+  <!--color: white;-->
+  <!--height: 50px;-->
+  <!--text-align: center;"></div>-->
+</div>
+</body>
+
+</html>
